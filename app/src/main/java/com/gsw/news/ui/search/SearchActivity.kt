@@ -3,6 +3,7 @@ package com.gsw.news.ui.search
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,6 +39,8 @@ class SearchActivity : BaseActivity() {
     private lateinit var llm: LinearLayoutManager
     private lateinit var adapterArticle: AdapterArticle
 
+    private var q = "a"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.apply {
@@ -50,10 +53,8 @@ class SearchActivity : BaseActivity() {
             etSearch.setOnEditorActionListener { textView, i, keyEvent ->
                 if (i == EditorInfo.IME_ACTION_SEARCH) {
                     query.clear()
-                    query["q"] = etSearch.text.toString().trim()
-                    query["page"] = page.toString()
-                    query[Constant.qApiKey] = Constant.apiKey
-                    viewModel.getEverything(query = query)
+                    q = etSearch.text.toString()
+                    initData()
                     return@setOnEditorActionListener true
                 }
                 false
@@ -77,10 +78,11 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun initData() {
+        newData.clear()
         page = 1
         query.clear()
-        query["q"] = "a"
-        query["page"] = page.toString()
+        query[Constant.qQ] = q
+        query[Constant.qPage] = page.toString()
         query[Constant.qApiKey] = Constant.apiKey
         viewModel.getEverything(query = query)
     }
@@ -141,24 +143,11 @@ class SearchActivity : BaseActivity() {
                 }
             }
 
-        }
-
-    }
-
-    private fun setData(data: List<ArticlesItem>) {
-        adapterArticle.submitList(data)
-    }
-
-    private fun initDataMore() {
-        query["page"] = page.toString()
-        query[Constant.qApiKey] = Constant.apiKey
-        viewModel.getEverythingMore(query = query)
-        viewModel.apply {
             observe(loading2) {
                 if (it) binding.pbArticle.toVisible() else binding.pbArticle.toGone()
             }
             observe(error2) {
-                toastCenter("Last Page..")
+                Log.d("TAG", "observeChange: $it")
             }
             observe(dataGetEverythingMore) {
                 binding.apply {
@@ -197,5 +186,17 @@ class SearchActivity : BaseActivity() {
                 }
             }
         }
+
+    }
+
+    private fun setData(data: List<ArticlesItem>) {
+        adapterArticle.submitList(data)
+    }
+
+    private fun initDataMore() {
+        query[Constant.qQ] = q
+        query[Constant.qPage] = page.toString()
+        query[Constant.qApiKey] = Constant.apiKey
+        viewModel.getEverythingMore(query = query)
     }
 }

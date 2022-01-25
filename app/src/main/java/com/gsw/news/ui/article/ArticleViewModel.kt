@@ -5,13 +5,14 @@ import com.gsw.news.base.BaseViewModel
 import com.gsw.news.models.response.ArticlesItem
 import com.gsw.news.models.response.SourcesItem
 import com.gsw.news.other.Resource
+import com.gsw.news.other.SingleLiveEvent
 import com.gsw.news.repo.callGetArticle
 import com.gsw.news.repo.callGetSources
 
 class ArticleViewModel : BaseViewModel() {
 
-    val dataGetArticle: MutableLiveData<Resource<List<ArticlesItem>>> by lazy { MutableLiveData() }
-    val dataGetArticleMore: MutableLiveData<Resource<List<ArticlesItem>>> by lazy { MutableLiveData() }
+    val dataGetArticle: SingleLiveEvent<Resource<List<ArticlesItem>>> by lazy { SingleLiveEvent() }
+    val dataGetArticleMore: SingleLiveEvent<Resource<List<ArticlesItem>>> by lazy { SingleLiveEvent() }
 
     fun getArticle(query: Map<String, String>) {
         launch {

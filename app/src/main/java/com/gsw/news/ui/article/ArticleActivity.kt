@@ -76,9 +76,11 @@ class ArticleActivity : BaseActivity() {
     }
 
     private fun initData() {
+        newData.clear()
         page = 1
         query.clear()
         query[Constant.qSources] = sources
+        query[Constant.qPage] = page.toString()
         query[Constant.qApiKey] = Constant.apiKey
         viewModel.getArticle(query = query)
     }
@@ -138,21 +140,14 @@ class ArticleActivity : BaseActivity() {
                     load = false
                 }
             }
-        }
-    }
 
-    private fun initDataMore() {
-        query["query"] = page.toString()
-        query[Constant.qApiKey] = Constant.apiKey
-        viewModel.getArticleMore(query = query)
-        viewModel.apply {
             observe(loading2) {
                 if (it) binding.pbArticle.toVisible() else binding.pbArticle.toGone()
             }
             observe(error2) {
-                toastCenter("Last Page..")
+                toastCenter(it)
             }
-            observe(dataGetArticle) {
+            observe(dataGetArticleMore) {
                 binding.apply {
                     rvArticle.apply {
                         addOnScrollListener(object :
@@ -189,6 +184,13 @@ class ArticleActivity : BaseActivity() {
                 }
             }
         }
+    }
+
+    private fun initDataMore() {
+        query[Constant.qSources] = sources
+        query[Constant.qPage] = page.toString()
+        query[Constant.qApiKey] = Constant.apiKey
+        viewModel.getArticleMore(query = query)
     }
 
     private fun setData(data: List<ArticlesItem>) {
