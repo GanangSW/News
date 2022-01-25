@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">News</string>
+    <string name="search">Search...</string>
+    <string name="input_to_search">Input to search</string>
 </resources>

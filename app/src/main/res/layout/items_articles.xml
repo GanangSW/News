@@ -12,7 +12,8 @@
         android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="TODO" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -21,21 +22,23 @@
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvItemArticleSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="9sp"
+            tools:text="@tools:sample/first_names" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvItemArticleTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="3"
             android:textColor="@color/black"
             tools:text="@tools:sample/lorem/random" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvItemArticleAuthor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="9sp"
-            tools:text="@tools:sample/first_names" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvItemArticlePublishAt"

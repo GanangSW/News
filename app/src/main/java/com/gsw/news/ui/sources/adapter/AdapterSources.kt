@@ -1,20 +1,16 @@
 package com.gsw.news.ui.sources.adapter
 
-import android.graphics.Color
-import android.graphics.Typeface
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.amulyakhare.textdrawable.TextDrawable
+import com.gsw.news.R
 import com.gsw.news.databinding.ItemsSourcesBinding
 import com.gsw.news.models.response.SourcesItem
 import com.gsw.news.other.Tools.Companion.tText
-import com.amulyakhare.textdrawable.util.ColorGenerator
-import com.gsw.news.other.Tools.Companion.toGone
-import java.util.*
 
 
 class AdapterSources(private val customListeners: CustomListeners) :
@@ -66,24 +62,13 @@ class AdapterSources(private val customListeners: CustomListeners) :
             }
             binding.apply {
                 item.apply {
-
-                    val generator = ColorGenerator.MATERIAL
-                    val color1 = generator.randomColor
                     val drawable = TextDrawable.builder()
-                        .beginConfig()
-                        .withBorder(4)
-                        .endConfig()
-                        .buildRoundRect(name?.take(1), color1, 10);
+                        .buildRound(name?.take(1), ContextCompat.getColor(root.context,R.color.grey))
 
                     ivSource.setImageDrawable(drawable)
 
                     tvItemSourcesName.tText(name)
-                    tvItemSourcesCategory.tText(category?.replaceFirstChar {
-                        if (it.isLowerCase()) it.titlecase(
-                            Locale.getDefault()
-                        ) else it.toString()
-                    })
-                    tvItemSourcesCountry.tText("$country - $language")
+                    tvItemSourcesDesc.tText(description)
                 }
             }
         }

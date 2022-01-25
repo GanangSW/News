@@ -8,14 +8,17 @@
         style="?attr/actionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_round_arrow_back_24" />
+        android:src="@drawable/ic_round_arrow_back_24"
+        android:contentDescription="TODO" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:ellipsize="end"
         android:gravity="center"
+        android:maxLines="1"
         android:text="@string/app_name"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -26,6 +29,7 @@
         style="?attr/actionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_round_search_24" />
+        android:src="@drawable/ic_round_search_24"
+        android:contentDescription="TODO" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -8,7 +8,8 @@
     <ImageView
         android:id="@+id/ivSource"
         android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:contentDescription="TODO" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -20,19 +21,14 @@
             android:id="@+id/tvItemSourcesName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textColor="@color/black" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvItemSourcesCategory"
+            android:id="@+id/tvItemSourcesDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvItemSourcesCountry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:textSize="12sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

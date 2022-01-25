@@ -7,18 +7,30 @@
     android:orientation="vertical"
     tools:context=".ui.search.SearchActivity">
 
+    <include
+        android:id="@+id/incToolbar"
+        layout="@layout/layout_toolbar" />
+
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="#F0F0F0"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/white"
         android:drawableStart="@drawable/ic_round_search_24"
         android:drawablePadding="5dp"
-        android:hint="Cari..."
+        android:hint="@string/search"
         android:imeOptions="actionSearch"
         android:inputType="text"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:textSize="12sp"
+        android:importantForAutofill="no" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srlArticle"
@@ -46,8 +58,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:text="@string/input_to_search"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 

@@ -71,9 +71,9 @@ class AdapterCategories(private val customListeners: CustomListeners) :
                 })
                 ivItemCategories.setImageDrawable(item.image)
 
-                val generator = ColorGenerator.MATERIAL
-                val color1 = generator.randomColor
-                llcItemCategories.setBackgroundColor(color1)
+//                val generator = ColorGenerator.MATERIAL
+//                val color1 = generator.randomColor
+//                llcItemCategories.setBackgroundColor(color1)
             }
 
         }

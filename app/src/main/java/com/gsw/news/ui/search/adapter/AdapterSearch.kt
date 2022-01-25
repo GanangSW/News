@@ -1,4 +1,4 @@
-package com.gsw.news.ui.article.adapter
+package com.gsw.news.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,8 +11,8 @@ import com.gsw.news.other.Tools.Companion.dateFormat
 import com.gsw.news.other.Tools.Companion.loadImageGlide
 import com.gsw.news.other.Tools.Companion.tText
 
-class AdapterArticle(private val customListeners: CustomListeners) :
-    RecyclerView.Adapter<AdapterArticle.VHArticle>() {
+class AdapterSearch(private val customListeners: CustomListeners) :
+    RecyclerView.Adapter<AdapterSearch.VHSearch>() {
 
     private val diffUtilItemCallback = object : DiffUtil.ItemCallback<ArticlesItem>() {
 
@@ -30,12 +30,12 @@ class AdapterArticle(private val customListeners: CustomListeners) :
 
     private lateinit var binding: ItemsArticlesBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHArticle {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHSearch {
         binding = ItemsArticlesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return VHArticle(binding, customListeners)
+        return VHSearch(binding, customListeners)
     }
 
-    override fun onBindViewHolder(holder: VHArticle, position: Int) {
+    override fun onBindViewHolder(holder: VHSearch, position: Int) {
         holder.bind(listDiffer.currentList[position])
     }
 
@@ -47,7 +47,7 @@ class AdapterArticle(private val customListeners: CustomListeners) :
         listDiffer.submitList(list)
     }
 
-    class VHArticle
+    class VHSearch
     constructor(
         private val binding: ItemsArticlesBinding,
         private val customListeners: CustomListeners

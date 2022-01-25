@@ -1,31 +1,28 @@
 package com.gsw.news.ui.search
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gsw.news.R
 import com.gsw.news.base.BaseActivity
 import com.gsw.news.databinding.ActivitySearchBinding
 import com.gsw.news.models.response.ArticlesItem
 import com.gsw.news.other.Constant
 import com.gsw.news.other.Tools
-import com.gsw.news.other.Tools.Companion.afterTextChanged
 import com.gsw.news.other.Tools.Companion.setFalse
 import com.gsw.news.other.Tools.Companion.showLoading
 import com.gsw.news.other.Tools.Companion.tText
 import com.gsw.news.other.Tools.Companion.toGone
+import com.gsw.news.other.Tools.Companion.toInvisible
 import com.gsw.news.other.Tools.Companion.toVisible
 import com.gsw.news.other.Tools.Companion.toastCenter
 import com.gsw.news.other.observe
 import com.gsw.news.other.viewBinding
-import com.gsw.news.ui.article.ArticleViewModel
-import com.gsw.news.ui.article.adapter.AdapterArticle
 import com.gsw.news.ui.article.detail.DetailArticleActivity
+import com.gsw.news.ui.search.adapter.AdapterSearch
 
 class SearchActivity : BaseActivity() {
 
@@ -37,13 +34,22 @@ class SearchActivity : BaseActivity() {
     private var page = 1
     private var load = true
     private lateinit var llm: LinearLayoutManager
-    private lateinit var adapterArticle: AdapterArticle
+    private lateinit var adapterSearch: AdapterSearch
 
-    private var q = "a"
+    private var q = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.apply {
+
+            incToolbar.apply {
+                ivBack.setOnClickListener {
+                    finish()
+                }
+                tvTitle.tText("Search News")
+                ivSearch.toInvisible()
+            }
+
             srlArticle.setOnRefreshListener {
                 etSearch.setText("")
                 initData()
@@ -62,9 +68,7 @@ class SearchActivity : BaseActivity() {
         }
         llm = LinearLayoutManager(this)
 
-        initData()
-
-        adapterArticle = AdapterArticle(object : AdapterArticle.CustomListeners {
+        adapterSearch = AdapterSearch(object : AdapterSearch.CustomListeners {
             override fun onItemSelected(item: ArticlesItem) {
                 startActivity(
                     Intent(
@@ -107,7 +111,7 @@ class SearchActivity : BaseActivity() {
                     rvArticle.apply {
                         toVisible()
                         layoutManager = llm
-                        adapter = adapterArticle
+                        adapter = adapterSearch
                         hasFixedSize()
                         addOnScrollListener(object :
                             RecyclerView.OnScrollListener() {
@@ -190,7 +194,7 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun setData(data: List<ArticlesItem>) {
-        adapterArticle.submitList(data)
+        adapterSearch.submitList(data)
     }
 
     private fun initDataMore() {

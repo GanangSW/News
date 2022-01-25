@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import com.gsw.news.R
 import com.gsw.news.base.BaseActivity
 import com.gsw.news.databinding.ActivityMainBinding
@@ -37,49 +38,49 @@ class MainActivity : BaseActivity() {
             ModelCategories(
                 id = "1",
                 categories = "business",
-                image = resources.getDrawable(R.drawable.ic_round_business_24)
+                image = ContextCompat.getDrawable(this, R.drawable.ic_round_business_24)
             )
         )
         categories.add(
             ModelCategories(
                 id = "2",
                 categories = "entertainment",
-                image = resources.getDrawable(R.drawable.ic_round_apps_24)
+                image = ContextCompat.getDrawable(this, R.drawable.ic_round_entertainment)
             )
         )
         categories.add(
             ModelCategories(
                 id = "3",
                 categories = "general",
-                image = resources.getDrawable(R.drawable.ic_round_article_24)
+                image = ContextCompat.getDrawable(this, R.drawable.ic_round_general)
             )
         )
         categories.add(
             ModelCategories(
                 id = "4",
                 categories = "health",
-                image = resources.getDrawable(R.drawable.ic_round_health_and_safety_24)
+                image = ContextCompat.getDrawable(this, R.drawable.ic_round_health_and_safety_24)
             )
         )
         categories.add(
             ModelCategories(
                 id = "5",
                 categories = "science",
-                image = resources.getDrawable(R.drawable.ic_round_science_24)
+                image = ContextCompat.getDrawable(this, R.drawable.ic_round_science_24)
             )
         )
         categories.add(
             ModelCategories(
                 id = "6",
                 categories = "sports",
-                image = resources.getDrawable(R.drawable.ic_round_sports_soccer_24)
+                image = ContextCompat.getDrawable(this, R.drawable.ic_round_sports_soccer_24)
             )
         )
         categories.add(
             ModelCategories(
                 id = "7",
                 categories = "technology",
-                image = resources.getDrawable(R.drawable.ic_round_wb_incandescent_24)
+                image = ContextCompat.getDrawable(this, R.drawable.ic_round_wb_incandescent_24)
             )
         )
 

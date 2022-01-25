@@ -134,11 +134,13 @@ class Tools {
             if (value.isNullOrEmpty() || value == "null") this.text = "" else this.text = value
         }
 
-        fun DateFormat(existingStringDate: String?): String? {
+        fun dateFormat(existingStringDate: String?): String? {
             val newDate: String?
             val simpleDateFormat = SimpleDateFormat("E, d MMM yyyy", Locale(getCountry()))
             newDate = try {
-                val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(existingStringDate)
+                val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault()).parse(
+                    existingStringDate
+                )
                 simpleDateFormat.format(date)
             } catch (e: ParseException) {
                 e.printStackTrace()
@@ -151,24 +153,6 @@ class Tools {
             val locale = Locale.getDefault()
             val country = locale.country
             return country.toLowerCase(Locale.getDefault())
-        }
-
-        fun EditText.afterTextChanged(onTextChanged: (CharSequence?) -> Unit) {
-            this.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) = Unit
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                }
-
-                override fun afterTextChanged(editable: Editable?){
-                    onTextChanged.invoke(editable)
-                }
-            })
         }
     }
 }

@@ -20,22 +20,27 @@ class ArticleViewModel : BaseViewModel() {
                 .doOnSubscribe { loading.value = true }
                 .doOnTerminate { loading.value = false }
                 .subscribe({
-                    if (it.isSuccessful) {
-                        it.body()?.apply {
-                            if (status == "ok") {
-                                if (!articles.isNullOrEmpty()) {
-                                    dataGetArticle.value =
-                                        Resource(data = articles, totalResult = totalResults)
+                    when {
+                        it.isSuccessful -> {
+                            it.body()?.apply {
+                                if (status == "ok") {
+                                    if (!articles.isNullOrEmpty()) {
+                                        dataGetArticle.value =
+                                            totalResults?.let { it1 -> Resource.success(data = articles, totalResult = it1) }
+                                    } else {
+                                        error.value = "Data Empty"
+                                    }
                                 } else {
-                                    error.value = "Data Empty"
+                                    error.value = "Error"
                                 }
-                            } else {
-                                error.value = "Error"
                             }
-
                         }
-                    } else {
-                        error.value = it.message()
+                        it.code() == 429 -> {
+                            error.value = "Harap coba lagi nanti"
+                        }
+                        else -> {
+                            error.value = it.message()
+                        }
                     }
                 }, {
                     error.value = it.message
@@ -54,7 +59,7 @@ class ArticleViewModel : BaseViewModel() {
                             if (status == "ok") {
                                 if (!articles.isNullOrEmpty()) {
                                     dataGetArticle.value =
-                                        Resource(data = articles, totalResult = totalResults)
+                                        totalResults?.let { it1 -> Resource.success(data = articles, totalResult = it1) }
                                 } else {
                                     error2.value = "Data Empty"
                                 }

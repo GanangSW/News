@@ -8,10 +8,7 @@ data class ResponseGetSources(
 	val sources: List<SourcesItem>? = null,
 
 	@field:SerializedName("status")
-	val status: String? = null,
-
-	@field:SerializedName("message")
-	val message: String? = null
+	val status: String? = null
 )
 
 data class SourcesItem(

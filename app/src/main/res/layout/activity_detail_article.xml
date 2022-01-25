@@ -11,23 +11,18 @@
         style="?attr/actionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_round_arrow_back_24" />
+        android:src="@drawable/ic_round_arrow_back_24"
+        android:contentDescription="TODO" />
 
-    <RelativeLayout
+    <ProgressBar
+        android:id="@+id/pbDetailArticle"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" />
 
-        <WebView
-            android:id="@+id/webView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <WebView
+        android:id="@+id/wvDetailArticle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvDetailArticleLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Loading..."
-            android:visibility="gone" />
-    </RelativeLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -4,16 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_apps_24.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_arrow_back_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_article_24.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_business_24.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_entertainment.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_general.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_health_and_safety_24.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_science_24.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_search_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_sports_soccer_24.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/drawable/ic_round_wb_incandescent_24.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/activity_article.xml" value="0.209375" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/activity_detail_article.xml" value="0.209375" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/activity_main.xml" value="0.1962962962962963" />
-        <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/activity_search.xml" value="0.209375" />
+        <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/activity_search.xml" value="0.1903409090909091" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/activity_sources.xml" value="0.209375" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/activity_splash.xml" value="0.209375" />
         <entry key="..\:/Users/Ganang/AndroidStudioProjects/News/app/src/main/res/layout/items_articles.xml" value="0.209375" />

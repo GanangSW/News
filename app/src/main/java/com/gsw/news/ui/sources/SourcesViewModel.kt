@@ -17,9 +17,9 @@ class SourcesViewModel : BaseViewModel() {
                 .doOnSubscribe { loading.value = true }
                 .doOnTerminate { loading.value = false }
                 .subscribe({
+                    Log.d("Ganang", "getSources: $it")
                     if (it.isSuccessful) {
                         it.body()?.apply {
-                            Log.d("TAG", "getSources: $status")
                             if (status == "ok") {
                                 if (!sources.isNullOrEmpty()) {
                                     dataGetSources.value = sources
@@ -27,9 +27,11 @@ class SourcesViewModel : BaseViewModel() {
                                     error.value = "Data Empty"
                                 }
                             } else {
-                                error.value = message
+                                error.value = "Error"
                             }
                         }
+                    } else if (it.code() == 429) {
+                        error.value = "Harap coba lagi nanti"
                     } else {
                         error.value = it.message()
                     }
